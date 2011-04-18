@@ -1,0 +1,7 @@
+<%= semantic_form_for(@day) do |f|%>
+  <%=f.inputs do %>
+  <%= f.input :message %>
+  <%= f.input :status, :as =>:select, :collection => @day.all_statuses, :label => "Status" %>
+  <%= f.buttons %>
+  <% end %>
+<% end %>
