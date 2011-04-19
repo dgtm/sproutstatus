@@ -1,0 +1,8 @@
+<%= semantic_form_for(@holiday) do |f|%>
+  <%=f.inputs do %>
+  <%= f.input :start_at, :as => :datepicker %>
+  <%= f.input :end_at %>
+  <%= f.input :name %>
+  <%= f.buttons %>
+  <% end %>
+<% end %>

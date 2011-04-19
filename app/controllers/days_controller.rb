@@ -3,19 +3,19 @@ class DaysController < ApplicationController
 
 def index
 
-  ##Configure the hour and minute via the following array
+  ##Configure the hour and minute via the following array. Note that 5:30 PM is :hr => 17, :min => 30
 
   @schedules =
     [{
-      :start_time => {:hr =>0, :min =>0},
-      :end_time   => {:hr =>10, :min =>30},
+      :start_time => {:hr => 0, :min => 0},
+      :end_time   => {:hr => 10, :min => 30},
       :message    => ["Wating+for+the+sunrise","Making our way to the office"],
       :state      => "Closed",
       :font       => ["Wating+for+the+sunrise","Times New Roman"]
     },
     {
-      :start_time => {:hr =>10, :min =>31},
-      :end_time   => {:hr =>17, :min =>30},
+      :start_time => {:hr => 10, :min => 31},
+      :end_time   => {:hr => 17, :min => 30},
       :message    => ["Wating+for+the+sunset","Making our way from the office"],
       :state      => "Open",
       :font       => ["Wating+for+the+sunrise","Times New Roman"]
@@ -23,13 +23,21 @@ def index
     }]
 
   @current_time = Time.now
-
+  @date_today = DateTime.now
+  
   ## Compare the current time with start and end time of each hash inside the @schedules array
   @schedules.each do |schedule|
     @scheduled_start_time = Time.new.change(:hour => schedule[:start_time][:hr], :min => schedule[:start_time][:min])
     @scheduled_end_time = Time.new.change(:hour => schedule[:end_time][:hr], :min => schedule[:end_time][:min])
 
-    ## if an admin status is not set
+#Priorities for @current_message
+    # 3. Automatically Updated Statuses
+    # 2. Holiday Statuses
+    # 1. Admin Status
+    #####################################
+    
+    
+    # 3. Automatically Updated Statuses
 
     if (@current_time >= @scheduled_start_time && @current_time <= @scheduled_end_time)
         @current_status = schedule[:state]
@@ -39,10 +47,19 @@ def index
     end
 
 
-  # Check for admin status message (it overrides default!)
+  # 2. Holiday Statuses
+  # The calendar creates a DateTime object by default. So, it is necessary to compare the DateTime and not just Date.
 
-  # Check holidays
+  if is_holiday(@date_today)
+    @current_message = holiday_message(@date_today)
+  end
 
+
+  #  1. Admin Status
+  if !admin_status.is_blank?
+    @current_message = holiday_message(@date_today)
+  end
+  
   # Check default schedule
     # loop through the schedule timings to find current timing window
 
