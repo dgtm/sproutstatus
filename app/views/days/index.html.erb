@@ -5,7 +5,7 @@
 <%= link_to 'previous', days_path(:date => @previous_day.to_date) %> |
 <%= link_to 'next', days_path(:date => @next_day.to_date) %>
 
-
+<div id = "jclocker"></div>
 <div id = "current_text">
   <%= day_text(@current_day.to_time) %>
 </div>

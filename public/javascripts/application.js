@@ -3,8 +3,6 @@
 $(function() {
       $('#holiday_start_at,#leafe_start_date').datepicker({ dateFormat: 'yy-mm-dd', minDate: 0 });
       $('#holiday_end_at,#leafe_end_date').datepicker({ dateFormat: 'yy-mm-dd', minDate: 0 });
-      x = $('#leafe_start_date').val();
-      y = "2011/12/24";
 
       $('#leafe_end_date').live("click",function(){
           var x = $('#leafe_start_date').val();
@@ -12,5 +10,11 @@ $(function() {
           $('#leafe_end_date').datepicker("option", "minDate",x);
 
       });
+      $('#holiday_end_date').live("click",function(){
+          var y = $('#holiday_start_date').val();
+          $('#holiday_end_date').val(y);
+          $('#holiday_end_date').datepicker("option", "minDate",y);
 
+      });
+        $('#jclocker').jclock();
 });
