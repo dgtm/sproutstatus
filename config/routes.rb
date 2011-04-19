@@ -3,17 +3,21 @@ Sproutstatus::Application.routes.draw do
 
  root :to => "days#index"
 
-resources :days do
-  resources :statuses
-end
+resources :days
 
-resources :employee do
-  resources :absentees
+resources :employees do
+  resources :leaves
 end
-resources :absentees
+resources :leaves
 
 resources :holidays
-  # The priority is based upon order of creation:
+resources :admins do
+  collection do
+    get 'clear'
+  end
+end
+
+# The priority is based upon order of creation:
   # first created -> highest priority.
 
   # Sample of regular route:

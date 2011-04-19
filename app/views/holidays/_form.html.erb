@@ -1,7 +1,8 @@
 <%= semantic_form_for(@holiday) do |f|%>
   <%=f.inputs do %>
-  <%= f.input :start_at %>
-  <%= f.input :end_at %>
+  <%= f.input :start_at, :as => :string, :size =>10 %>
+  <%#Need to fill the end_at. Retrieve end_at with jquery%>
+  <%= f.input :end_at, :as => :string %>
   <%= f.input :name %>
   <%= f.buttons %>
   <% end %>

@@ -1,0 +1,9 @@
+<div id = 'admin_view'>
+  <%= render 'form' %>
+  <br /><br />
+  <div id = "admin_operations">
+  <%= link_to "Grant a Leave", employees_path %> |
+  <%= link_to "Show Leave Status", leaves_path %>
+  </div>
+</div>
+<%= link_to "Back", days_path %>

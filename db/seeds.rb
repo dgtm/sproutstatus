@@ -15,11 +15,3 @@
   ].each do |attribute|
     Employee.find_or_create_by_name(attribute)
   end
-
-  [
-    { :name => "Open" },
-    { :name => "Lunch" },
-    { :name => "Closed" },
-    ].each do |attribute|
-      Status.find_or_create_by_name(attribute)
-    end

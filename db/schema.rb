@@ -10,7 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110418214903) do
+ActiveRecord::Schema.define(:version => 20110419075257) do
+
+  create_table "admins", :force => true do |t|
+    t.string   "message"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "days", :force => true do |t|
     t.date     "date"
@@ -22,6 +29,14 @@ ActiveRecord::Schema.define(:version => 20110418214903) do
 
   create_table "employees", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "events", :force => true do |t|
+    t.string   "name"
+    t.datetime "start_at"
+    t.datetime "end_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

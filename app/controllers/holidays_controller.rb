@@ -5,11 +5,16 @@ def new
 end
 
 def create
-  @holiday = Holiday.create(params[:holiday])
+  if (params[:holiday][:start_at] == params[:holiday][:end_at])
+    @holiday = Holiday.create(:start_at => params[:holiday][:start_at], :name => params[:holiday][:name], :all_day =>true)
+  else
+    @holiday = Holiday.create(params[:holiday])
+  end
+
   if @holiday.save
       redirect_to days_path, :notice => "A new holiday"
   else
-    redirect_to days_path, :alert => "Failure to create a holiday"
+      render :action => 'new', :alert => "Failed to create a holiday"
   end
 end
 

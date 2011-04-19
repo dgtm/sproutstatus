@@ -1,0 +1,6 @@
+<% @employees.each do |employee| %>
+  <%= link_to employee.name, new_employee_leafe_path(employee) %> |
+  <%= link_to "Show Future Leaves", employee_path(employee) %>
+  <br />
+<% end %>
+<%= link_to "Back", admins_path %>

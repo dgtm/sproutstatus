@@ -1,0 +1,7 @@
+<h1><%= @employee.name %></h1>
+Granted Leaves:<br />
+<% @leaves.each do |l|%>
+  From <%= l.start_date %>
+  to <%= l.end_date %>
+  <br />
+<% end %>

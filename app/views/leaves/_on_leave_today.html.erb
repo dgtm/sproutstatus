@@ -1,0 +1,6 @@
+<% @leaves_today = Leafe.show_leaves_today( @current_day ) %>
+<% @leaves_today.each do |leave| %>
+ <div id = "employee_on_leave">
+    <%= link_to leave.employee.name, employee_path(leave.employee) %>
+  </div>
+<% end %>

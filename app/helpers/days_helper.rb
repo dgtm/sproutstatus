@@ -1,20 +1,23 @@
 module DaysHelper
+  def formatted_day(time)
+    time.localtime.strftime(" %a, %B %d")
+  end
 
-def isHoliday( today )
-   @holidays = Holiday.where('start_at <= ? AND end_at >= ?',Date.today, Date.today)
-    if @holidays.length == 0
-        return false
-        else 
-        return true
+  def day_text (time)
+    @day_now = time.to_date
+    if (@day_now == Date.today)
+      @day = "Today"
+    elsif (@day_now == Date.today - 1.day)
+      @day = "Yesterday"
+    elsif (@day_now == Date.today + 1.day)
+      @day = "Tomorrow"
+    else
+      @day = " "
     end
-end
+    return @day
+  end
 
-def holiday_message( today )
-
-# In case two or more holidays co-exist on the same day, sort by the created_at field and take the first element's status
-# This makes sure the latest created holiday's status is the one that is shown'
-   @holidays = Holiday.where('start_at <= ? AND end_at >= ?',Date.today, Date.today)
-   h.order('created_at DESC').first.name
-   
- end
+  def formatted_time(time)
+    time.localtime.strftime("%I:%M%p")
+  end
 end

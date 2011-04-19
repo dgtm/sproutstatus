@@ -1,0 +1,15 @@
+<%#Show leaves starting from tomorrow to 5 days from today %>
+<% @leaves_today = Leafe.show_leaves_today(Date.today) %>
+<% @recent_leaves = Leafe.show_recent_leaves(1,5) %>
+
+<h3>On Leave today:</h3>
+<% @leaves_today.each do |leave| %>
+  <%= link_to leave.employee.name, employee_path(leave.employee) %><br />
+<% end %>
+<br />
+<h3>Leaves in recent Future:</h3>
+<% @recent_leaves.each do |leave| %>
+  <%= link_to leave.employee.name, employee_path(leave.employee) %>
+  is going to be on leave from <%= leave.start_date%> to <%= leave.end_date%>
+  <br />
+<% end %>
