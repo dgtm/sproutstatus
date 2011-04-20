@@ -6,7 +6,7 @@
   <%= link_to 'previous', days_path(:date => @previous_day.to_date), :class => "prev" %>
   <%= link_to 'next', days_path(:date => @next_day.to_date), :class =>"next" %>
   <div id="page-wrap">
-
+Time <%= Time.now %><br /> Localtime <%= Time.now.localtime %><br /> <%= Time.now.localtime("+05:45") %>
     <h2 id="title"> <%= day_text(@current_day.to_time) %> </h2>
     <ul id="info-box">
       <div id = "jclock"> </div>
@@ -27,47 +27,3 @@
     </ul>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-<!-- <h3>
-  <%= link_to 'Admin?', admins_path %>
-</h3>
-
-<%= link_to 'previous', days_path(:date => @previous_day.to_date) %> |
-<%= link_to 'next', days_path(:date => @next_day.to_date) %>
-
-<div id = "jclocker"></div>
-<div id = "current_text">
-  <%= day_text(@current_day.to_time) %>
-</div>
-
-<div id = "current_time">
-  <%= formatted_time(Time.now) %>
-</div>
-
-<div id = "current_day">
-  <%= formatted_day(@current_day.to_time) %>
-</div>
-
-<div id = "current_status">
-  <%= @current_status %>
-</div>
-
-<div id = "current_message">
-  <%= @current_message %>
-</div>
-
-<div id = "absent_today">
-  <%= render 'leaves/on_leave_today' %>
-</div>
-
-<div id = "calendar">
-  <%= render 'calendar_partial' %>
-</div> -->
