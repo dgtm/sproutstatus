@@ -74,12 +74,14 @@ def index
     ]
 
   @current_time = Time.now.utc.localtime("+05:45")
+  @local_time = Time.now.utc.localtime("+05:45")
+
   @date_today = DateTime.now
 
 ## Compare the current time with start and end time of each hash inside the @schedules array
   @schedules.each do |schedule|
-    @scheduled_start_time = Time.new.change(:hour => schedule[:start_time][:hr], :min => schedule[:start_time][:min])
-    @scheduled_end_time = Time.new.change(:hour => schedule[:end_time][:hr], :min => schedule[:end_time][:min])
+    @scheduled_start_time = @local_time.change(:hour => schedule[:start_time][:hr], :min => schedule[:start_time][:min])
+    @scheduled_end_time = @local_time.change(:hour => schedule[:end_time][:hr], :min => schedule[:end_time][:min])
 
 #Priorities for @current_message
     # 3. Automatically Updated Statuses
