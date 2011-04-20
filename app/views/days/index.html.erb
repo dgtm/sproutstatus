@@ -6,7 +6,7 @@
   <%= link_to 'previous', days_path(:date => @previous_day.to_date), :class => "prev" %>
   <%= link_to 'next', days_path(:date => @next_day.to_date), :class =>"next" %>
   <div id="page-wrap">
-    <%= Time.now %>
+    <%= Time.now.utc.localtime("+05:45") %>
     <br />
     <h2 id="title"> <%= day_text(@current_day.to_time) %> </h2>
     <ul id="info-box">
