@@ -73,7 +73,7 @@ def index
     }
     ]
 
-  @current_time = Time.new.utc.localtime("+05:45")
+  @current_time = Time.now.utc.localtime("+05:45")
   @date_today = DateTime.now
 
 ## Compare the current time with start and end time of each hash inside the @schedules array
