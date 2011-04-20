@@ -74,21 +74,23 @@ def index
     ]
 
   @current_time = Time.now.utc.localtime("+05:45")
-  @local_time = Time.now.utc.localtime("+05:45")
+  @local_time = Time.now.utc#.localtime("+05:45")
 
   @date_today = DateTime.now
 
 ## Compare the current time with start and end time of each hash inside the @schedules array
   @schedules.each do |schedule|
-    @scheduled_start_time = @local_time.change(:hour => schedule[:start_time][:hr], :min => schedule[:start_time][:min]).utc.localtime("+05:45")
-    @scheduled_end_time = @local_time.change(:hour => schedule[:end_time][:hr], :min => schedule[:end_time][:min]).utc.localtime("+05:45")
+    #@scheduled_start_time = @local_time.change(:hour => schedule[:start_time][:hr], :min => schedule[:start_time][:min])#.utc.localtime("+05:45")
+    #@scheduled_end_time = @local_time.change(:hour => schedule[:end_time][:hr], :min => schedule[:end_time][:min])#.utc.localtime("+05:45")
+    @scheduled_start_time = Time.new(@current_time.year, @current_time.month, @current_time.day, schedule[:start_time][:hr], schedule[:start_time][:min], 0, "+05:45")
+    @scheduled_end_time = Time.new(@current_time.year, @current_time.month, @current_time.day, schedule[:end_time][:hr], schedule[:end_time][:min], 0, "+05:45")
 
 #Priorities for @current_message
     # 3. Automatically Updated Statuses
     # 2. Holiday Statuses
     # 1. Admin Status
     #####################################
-
+    #debugger
 
     # 3. Automatically Updated Statuses
    if (@current_time >= @scheduled_start_time && @current_time <= @scheduled_end_time)
