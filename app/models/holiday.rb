@@ -6,7 +6,7 @@ validates :end_at, :presence => true
 before_create :check_end_date
 
 def check_end_date
-  self.start_at <= self.end_at
+  self.start_at.to_date <= self.end_at.to_date
 end
 
 
@@ -25,7 +25,7 @@ end
      @holidays = Holiday.where('start_at <= ? AND end_at >= ?',today.to_datetime, today.to_datetime)
      @holidays.order('created_at DESC').first.name
    end
-   
+
    def self.create_holidays
         d = DateTime.now
         begin

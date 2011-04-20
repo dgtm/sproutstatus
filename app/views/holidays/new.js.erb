@@ -1,1 +1,12 @@
 $('#holidays').html("<%= escape_javascript(render( :partial => 'form')) %>");
+
+$('#holiday_start_at').datepicker({ dateFormat: 'yy-mm-dd', minDate: 0 });
+$('#holiday_end_at').datepicker({ dateFormat: 'yy-mm-dd', minDate: 0 });
+
+
+$('#holiday_end_at').live("click",function(){
+    var y = $('#holiday_start_at').val();
+    $('#holiday_end_at').val(y);
+    $('#holiday_end_at').datepicker("option", "minDate",y);
+
+});
