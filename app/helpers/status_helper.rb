@@ -1,0 +1,3 @@
+module StatusHelper
+
+end

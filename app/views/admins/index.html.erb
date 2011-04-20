@@ -1,9 +1,31 @@
-<div id = 'admin_view'>
-  <%= render 'form' %>
-  <br /><br />
-  <div id = "admin_operations">
-  <%= link_to "Grant a Leave", employees_path %> |
-  <%= link_to "Show Leave Status", leaves_path %>
+<div class="ribbon-box">
+   <%= Admin %>
+</div>
+
+<div id="page-wrap-outer">
+
+  <div id="page-wrap">
+    <ul id="info-box">
+      <div id = "jclock"> </div>
+      <li> <%= render 'form' %> </li>
+      <li> <%#= @current_status %> </li>
+    </ul>
+    <ul id="links">
+      <div id = "accordion">
+      <h2><a href="#">Manage Leaves</a></h2>
+      <div id = "absent_today">
+        <%= link_to "Grant a Leave", employees_path, :remote => true %><br />
+         <%= link_to "Show Leave Status", leaves_path, :remote => true %>
+      </div>
+      <h2><a href="#">Manage Holidays</a></h2>
+      <div id = "holidays">
+        <%= render 'holidays/form' %>
+      </div>
+      <h2><a href="#">Upcoming Holidays</a></h2>
+      <div id = "calendar">
+        <%= render 'days/calendar_partial' %>
+      </div>
+      </div>
+    </ul>
   </div>
 </div>
-<%= link_to "Back", days_path %>

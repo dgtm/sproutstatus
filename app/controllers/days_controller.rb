@@ -6,11 +6,17 @@ CLOSED = "Closed"
 
 
 def index
+
 # Find current, past and next day
   @current_day = params[:date] ? params[:date].to_date : Date.today
   @previous_day = @current_day - 1.day
   @next_day = @current_day + 1.day
-
+  if (Date.today - @previous_day).to_i >= 7
+    @previous_day = @current_day
+  end
+  if (@next_day - Date.today).to_i > 2
+    @next_day = @current_day
+  end
 #parameters necessary for the calendar
   @month = (params[:month] || (Time.zone || Time).now.month).to_i
   @year = (params[:year] || (Time.zone || Time).now.year).to_i

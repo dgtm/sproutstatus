@@ -16,5 +16,9 @@ $(function() {
           $('#holiday_end_date').datepicker("option", "minDate",y);
 
       });
-        $('#jclocker').jclock();
+       $('#jclock').tzineClock();
+      $('#accordion').accordion({collapsible:true,active:false,
+        autoHeight: false,
+              navigation: true
+        });
 });

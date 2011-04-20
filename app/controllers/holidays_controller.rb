@@ -12,7 +12,7 @@ def create
   end
 
   if @holiday.save
-      redirect_to days_path, :notice => "A new holiday"
+      redirect_to holidays_path, :notice => "A new holiday was created"
   else
       render :action => 'new', :alert => "Failed to create a holiday"
   end

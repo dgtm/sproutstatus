@@ -1,6 +1,6 @@
 module CalendarHelper
   def month_link(month_date)
-    link_to(I18n.localize(month_date, :format => "%B"), {:month => month_date.month, :year => month_date.year})
+    link_to(I18n.localize(month_date, :format => "%B"), {:month => month_date.month, :year => month_date.year}, :remote => true)
   end
 
   # custom options for this calendar
@@ -14,7 +14,7 @@ module CalendarHelper
       :next_month_text => month_link(@shown_month.next_month) + " >>",
 
 
-      :width => 400,
+      :width => 380,
       :height => 400,
       :day_names_height => 15,
       :day_nums_height => 10,
