@@ -9,7 +9,7 @@
     <%= Time.now.utc.localtime("+05:45") %>
     <br />
     <%= @current_time %><br />
-     <%= @scheduled_start_time %> | <%= @scheduled_end_time %>
+     <%= @scheduled_start_time.utc.localtime("+05:45") %> | <%= @scheduled_end_time.utc.localtime("+05:45") %>
     <br />
     <h2 id="title"> <%= day_text(@current_day.to_time) %> </h2>
     <ul id="info-box">
