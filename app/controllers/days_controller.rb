@@ -8,7 +8,7 @@ CLOSED = "Closed"
 def index
 
 # Find current, past and next day
-  @current_day = params[:date] ? params[:date].to_date : Date.today
+  @current_day = params[:date] ? params[:date].to_date : Time.now.utc.localtime("+05:45").to_date
   @previous_day = @current_day - 1.day
   @next_day = @current_day + 1.day
   if (Date.today - @previous_day).to_i >= 7
