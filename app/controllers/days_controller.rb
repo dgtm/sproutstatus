@@ -120,7 +120,7 @@ def index
           Admin.destroy_all
   end
 
-  if (@current_day != Date.today) && (!Holiday.is_holiday(@current_day))
+  if (@current_day != Time.now.utc.localtime("+05:45").to_date) && (!Holiday.is_holiday(@current_day))
     @current_message = " "
     @current_status = " "
   end
