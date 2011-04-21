@@ -11,7 +11,7 @@ class Leafe < ActiveRecord::Base
 
   # This function will show leaves that start from x to y days from today
   def self.show_recent_leaves( x,y )
-    Leafe.find(:all, :conditions => ['start_date >= ? AND start_date <= ?', Date.today + x.days, Date.today + y.days])
+    Leafe.find(:all, :conditions => ['start_date >= ? AND start_date <= ?', Time.now.utc.localtime("+05:45").to_date + x.days, Time.now.utc.localtime("+05:45").to_date + y.days])
   end
 
   def self.show_leaves_today( today )
@@ -19,6 +19,6 @@ class Leafe < ActiveRecord::Base
   end
 
   def self.show_past_leaves( num_of_days )
-    Leafe.find(:all, :conditions => ['start_date <= ? AND end_date >= ?', Date.today - num_of_days.days, Date.today - num_of_days.days])
+    Leafe.find(:all, :conditions => ['start_date <= ? AND end_date >= ?', Time.now.utc.localtime("+05:45").to_date - num_of_days.days, Time.now.utc.localtime("+05:45").to_date - num_of_days.days])
   end
 end

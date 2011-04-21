@@ -113,10 +113,10 @@ def index
 #  1. Admin Status
         # if admin status is not empty
         # and created_at for this message is not more than 1 day
-  if (!Admin.find(:all).empty?  && !Day.is_more_than_one_day( Admin.last.created_at.to_date ))
+  if (!Admin.find(:all).empty?  && !Day.is_more_than_one_day( Admin.last.created_at.utc.localtime("+05:45").to_date ))
         @current_message = Admin.last.message
 
-    elsif (!Admin.find(:all).empty?  && Day.is_more_than_one_day( Admin.last.created_at.to_date ))
+    elsif (!Admin.find(:all).empty?  && Day.is_more_than_one_day( Admin.last.created_at.utc.localtime("+05:45").to_date ))
           Admin.destroy_all
   end
 
