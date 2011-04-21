@@ -5,7 +5,7 @@ class Day < ActiveRecord::Base
  end
 
  def self.is_more_than_one_day( day )
-  if (Date.today - day ) > 1
+  if (Time.now.utc.localtime("+05:45").to_date - day ) > 1
     return true
   else
     return false
