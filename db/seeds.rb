@@ -11,7 +11,12 @@
   { :name => "Jayandra" },
   { :name => "Dipil" },
   { :name => "Abhay" },
-  { :name => "Prasvin" }
+  { :name => "Prasvin" },
+  { :name => "Chandra" },
+  { :name => "Dipesh" },
+  { :name => "Sawaragya" },
+  { :name => "Kshitiz" },
+  { :name => "Kapil" }
   ].each do |attribute|
     Employee.find_or_create_by_name(attribute)
   end
