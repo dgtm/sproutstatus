@@ -15,3 +15,12 @@
   ].each do |attribute|
     Employee.find_or_create_by_name(attribute)
   end
+  
+  [
+  {:name => "Holi", :start_at => DateTime.now + 1.day, :end_at => DateTime.now + 2.days, :all_day => false},
+  {:name => "Trip Again", :start_at => DateTime.now + 5.days, :end_at => DateTime.now + 8.days, :all_day => false},
+  {:name => "Sprout Day", :start_at => DateTime.now + 10.days, :end_at => DateTime.now + 10.days, :all_day => true}
+ 
+  ].each do |attribute|
+    Holiday.find_or_create_by_name(attribute)
+  end
