@@ -4,9 +4,9 @@ namespace :holiday do
     d = Time.now.utc.localtime("+05:45").to_datetime
     puts d
       begin
-        if (d.saturday?) || (d.sunday?)
+        if (d.saturday?)
           puts d.day
-            @holiday = Holiday.create(:start_at => d.to_date, :end_at => d.to_date, :name => "Weekend", :all_day => true)
+            @holiday = Holiday.create(:start_at => d.to_date, :end_at => d.to_date + 1.day, :name => "Weekend", :all_day => true)
             @holiday.save
           end
           d = d + 1.day
