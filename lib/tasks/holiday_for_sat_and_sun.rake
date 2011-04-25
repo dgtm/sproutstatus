@@ -6,7 +6,7 @@ namespace :holiday do
       begin
         if (d.saturday?)
           puts d.day
-            @holiday = Holiday.create(:start_at => d.to_date, :end_at => d.to_date + 1.day, :name => "Weekend", :all_day => true)
+            @holiday = Holiday.create(:start_at => d.to_date, :end_at => d.to_date + 1.day, :name => "Weekend", :all_day => false)
             @holiday.save
           end
           d = d + 1.day
