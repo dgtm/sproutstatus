@@ -1,7 +1,8 @@
-<%= semantic_form_for [@employee,@leave] do |f| %>
+<%= semantic_remote_form_for [@employee,@leave] do |f| %>
   <%=f.inputs do %>
   <%= f.input :start_date, :as => :string %>
   <%= f.input :end_date, :as => :string %>
   <%= f.buttons %>
   <% end %>
 <% end %>
+<%= link_to "Approved Leaves", employee_path(@employee), :remote => true %>

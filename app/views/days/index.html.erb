@@ -1,35 +1,33 @@
-<h3>
-  <%= link_to 'Admin?', admins_path %>
-</h3>
-
-<%= link_to 'previous', days_path(:date => @previous_day.to_date) %> |
-<%= link_to 'next', days_path(:date => @next_day.to_date) %>
-
-<div id = "jclocker"></div>
-<div id = "current_text">
-  <%= day_text(@current_day.to_time) %>
+<div class="ribbon-box">
+   <%= @current_message %>
 </div>
 
-<div id = "current_time">
-  <%= formatted_time(Time.now) %>
-</div>
-
-<div id = "current_day">
-  <%= formatted_day(@current_day.to_time) %>
-</div>
-
-<div id = "current_status">
-  <%= @current_status %>
-</div>
-
-<div id = "current_message">
-  <%= @current_message %>
-</div>
-
-<div id = "absent_today">
-  <%= render 'leaves/on_leave_today' %>
-</div>
-
-<div id = "calendar">
-  <%= render 'calendar_partial' %>
+<div id="page-wrap-outer">
+  <%= link_to 'previous', days_path(:date => @previous_day.to_date), :class => "prev" %>
+  <%= link_to 'next', days_path(:date => @next_day.to_date), :class =>"next" %>
+  <div id="page-wrap">
+    <%= Time.now.utc.localtime("+05:45") %>
+    <br />
+    <%= @current_time %><br />
+     <%= @scheduled_start_time %> | <%= @scheduled_end_time %>
+    <br />
+    <h2 id="title"> <%= day_text(@current_day.to_time) %> </h2>
+    <ul id="info-box">
+      <div id = "jclock"> </div>
+      <li> <%= formatted_day(@current_day.to_time) %> </li>
+      <li> <%= @current_status %> </li>
+    </ul>
+    <ul id="links">
+      <div id = "accordion">
+      <h2><a href="#">Who's Out?</a></h2>
+      <div id = "absent_today">
+        <%= render 'leaves/on_leave_today' %>
+      </div>
+      <h2><a href="#">Upcoming Holidays</a></h2>
+      <div id = "calendar">
+        <%= render 'calendar_partial' %>
+      </div>
+      </div>
+    </ul>
+  </div>
 </div>

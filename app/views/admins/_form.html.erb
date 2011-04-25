@@ -1,5 +1,5 @@
 <%= form_tag admins_path, :method => 'post' do %>
-  <%= text_area_tag "content","","rows" => 10,"cols" => 10 %>
-  <%= submit_tag "Post" %>
+  <%= text_area_tag "content","","rows" => 5,"cols" => 30 %>
+  <div id = "post_button_div"><%= submit_tag "Post",:id => "post_button" %></div>
 <% end %>
-  <%= link_to "Clear Status", clear_admins_path %>
+  <div id ="clear_status"><%= link_to "Clear Status", clear_admins_path %></div>

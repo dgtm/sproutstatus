@@ -6,11 +6,17 @@ CLOSED = "Closed"
 
 
 def index
+
 # Find current, past and next day
   @current_day = params[:date] ? params[:date].to_date : Date.today
   @previous_day = @current_day - 1.day
   @next_day = @current_day + 1.day
-
+  if (Date.today - @previous_day).to_i >= 7
+    @previous_day = @current_day
+  end
+  if (@next_day - Date.today).to_i > 2
+    @next_day = @current_day
+  end
 #parameters necessary for the calendar
   @month = (params[:month] || (Time.zone || Time).now.month).to_i
   @year = (params[:year] || (Time.zone || Time).now.year).to_i
@@ -67,20 +73,24 @@ def index
     }
     ]
 
-  @current_time = Time.now
+  @current_time = Time.now.utc.localtime("+05:45")
+  @local_time = Time.now.utc#.localtime("+05:45")
+
   @date_today = DateTime.now
 
 ## Compare the current time with start and end time of each hash inside the @schedules array
   @schedules.each do |schedule|
-    @scheduled_start_time = Time.new.change(:hour => schedule[:start_time][:hr], :min => schedule[:start_time][:min])
-    @scheduled_end_time = Time.new.change(:hour => schedule[:end_time][:hr], :min => schedule[:end_time][:min])
+    #@scheduled_start_time = @local_time.change(:hour => schedule[:start_time][:hr], :min => schedule[:start_time][:min])#.utc.localtime("+05:45")
+    #@scheduled_end_time = @local_time.change(:hour => schedule[:end_time][:hr], :min => schedule[:end_time][:min])#.utc.localtime("+05:45")
+    @scheduled_start_time = Time.new(@current_time.year, @current_time.month, @current_time.day, schedule[:start_time][:hr], schedule[:start_time][:min], 0, "+05:45")
+    @scheduled_end_time = Time.new(@current_time.year, @current_time.month, @current_time.day, schedule[:end_time][:hr], schedule[:end_time][:min], 0, "+05:45")
 
 #Priorities for @current_message
     # 3. Automatically Updated Statuses
     # 2. Holiday Statuses
     # 1. Admin Status
     #####################################
-
+    #debugger
 
     # 3. Automatically Updated Statuses
    if (@current_time >= @scheduled_start_time && @current_time <= @scheduled_end_time)

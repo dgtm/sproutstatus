@@ -1,0 +1,11 @@
+$('#absent_today').html("<%= escape_javascript(render( :partial => 'leaves/new')) %>");
+
+$('#leafe_start_date').datepicker({ dateFormat: 'yy-mm-dd', minDate: 0 });
+$('#leafe_end_date').datepicker({ dateFormat: 'yy-mm-dd', minDate: 0 });
+
+$('#leafe_end_date').live("click",function(){
+    var x = $('#leafe_start_date').val();
+    $('#leafe_end_date').val(x);
+    $('#leafe_end_date').datepicker("option", "minDate",x);
+
+});

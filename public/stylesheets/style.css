@@ -4,3 +4,54 @@
 .ui-timepicker-div dl dd{ margin: -25px 0 10px 65px; }
 .ui-timepicker-div td { font-size: 90%; }
 
+* { margin: 0; padding: 0; }
+li{ list-style:none; }
+h2{ font-weight:normal; }
+a{ text-decoration:none; }
+
+html {
+  background: url(../images/bg.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+body{ color:#fff; }
+
+.prev, .next{ background:url(../images/arrows.png) no-repeat; display:block; height:40px; position:absolute; top:165px; text-indent:-9999px; width:40px; }
+.prev{ background-position:0 0; left:0; }
+.next{ background-position:right 0; right:0; }
+
+.ribbon-box{ background: url(../images/bg-transparent.png); padding:20px 190px; position:absolute; left:-195px; top:70px; width:400px; -webkit-transform: rotate(-45deg); -moz-transform: rotate(-45deg); color:#aacb58; font-size:48px; font-family: 'Goudy Bookletter 1911', arial, serif; text-align:center; }
+/*#notice_and_alerts{ width: 490px; margin: 50px auto; position:relative; }*/
+#page-wrap-outer{ width: 490px; margin: 50px auto; position:relative; }
+#page-wrap,#notice_and_alerts { width: 400px; margin: 0 auto; background: url(../images/bg-transparent.png); -moz-box-shadow: 0 0 20px black; -webkit-box-shadow: 0 0 20px black; box-shadow: 0 0 20px black; text-align:center; }
+p{ font: 15px/2 Georgia, Serif; margin: 0 0 30px 0; text-indent: 40px; }
+h1#status-msg { font:48px Unkempt, Serif; margin: 0 0; }
+#title{ background:url(../images/bg-separator.png) repeat-x 0 bottom; font-size:48px; padding:10px 0; }
+#info-box{ font-size:38px; }
+#info-box li{ padding:15px 0; }
+
+#links li{ border-top:1px solid #191919; }
+#links li a{ color:#d3d2d2; display:block; font-size:32px; padding:10px 0; }
+#links li a:hover{ color:#fff; background: url(../images/bg-transparent.png); }
+
+#links h2{ border-top:1px solid #191919; }
+#links h2 a{ color:#d3d2d2; display:block; font-size:32px; padding:10px 0;}
+#calendar {padding:10px;}
+#clear_status a{
+color:#fff;
+text-decoration:none;
+font-size:25px;
+
+}
+#post_button{
+      border: 1px solid #006;
+      background: #9cf;
+      border-width:0px;
+      font-size:30px;
+      text-align:center;
+      border-radius: 15px;
+      padding:10px;
+}

@@ -1,0 +1,6 @@
+<% @employees.each do |employee| %>
+  <%= link_to employee.name, new_employee_leafe_path(employee), :remote => true %>
+  <br />
+<% end %>
+<br />
+<%= link_to "[Back]", admins_path %>

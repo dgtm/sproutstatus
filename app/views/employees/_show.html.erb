@@ -1,0 +1,7 @@
+<h4><%= @employee.name %></h4>
+<% @leaves.each do |l|%>
+  From <%= l.start_date %>
+  to <%= l.end_date %>
+  <br />
+<% end %>
+<%= link_to "[Back]", new_employee_leafe_path(@employee), :remote => true %>
