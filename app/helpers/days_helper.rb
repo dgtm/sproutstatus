@@ -4,20 +4,20 @@ module DaysHelper
   end
 
   def day_text (time)
+  
+
     @day_now = time.to_date
-    @ago = (Date.today - @day_now).to_i
-    if (@day_now == Date.today)
-      @day = "Today"
-    elsif (@day_now == Date.today - 1.day)
-      @day = "Yesterday"
-    elsif (@day_now == Date.today + 1.day)
-      @day = "Tomorrow"
-      elsif (@day_now == Date.today + 2.day)
-        @day = "Day after Tomorrow"
+    @date_today = Time.now.utc.localtime("+05:45").to_date
+    @ago = (@date_today - @day_now).to_i
+        @may = { :ago => @ago }
+    if (@day_now == @date_today)
+      @may = {:absent_text => "Who's out?", :day => "Today"}
+    elsif (@day_now == @date_today - 1.day)
+      @may = {:absent_text => "Who was out?", :day => "Yesterday"}
     else
-      @day = "#{@ago} days ago"
-    end
-    return @day
+      @may = {:absent_text => "Who was out?", :day => "#{@ago} days ago"}
+      end
+    return @may
   end
 
   def formatted_time(time)

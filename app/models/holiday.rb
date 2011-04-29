@@ -6,7 +6,7 @@ validates :end_at, :presence => true
 before_create :check_end_date
 
 def check_end_date
-  self.start_at.to_date <= self.end_at.to_date
+  self.start_at.to_time.utc.localtime("+05:45").to_date <= self.end_at.to_time.utc.localtime("+05:45").to_date
 end
 
 

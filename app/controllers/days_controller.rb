@@ -7,14 +7,19 @@ CLOSED = "Closed"
 
 def index
 
+@left_arrow = true
+@right_arrow = true
+
 # Find current, past and next day
-  @current_day = params[:date] ? params[:date].to_date : Date.today
+  @current_day = params[:date] ? params[:date].to_date : Time.now.utc.localtime("+05:45").to_date
   @previous_day = @current_day - 1.day
   @next_day = @current_day + 1.day
-  if (Date.today - @previous_day).to_i >= 7
+  if (Time.now.utc.localtime("+05:45").to_date - @current_day).to_i > 6
+    @left_arrow = false
     @previous_day = @current_day
   end
-  if (@next_day - Date.today).to_i > 2
+  if (@current_day - Time.now.utc.localtime("+05:45").to_date).to_i >= 0
+    @right_arrow = false
     @next_day = @current_day
   end
 #parameters necessary for the calendar
@@ -113,14 +118,14 @@ def index
 #  1. Admin Status
         # if admin status is not empty
         # and created_at for this message is not more than 1 day
-  if (!Admin.find(:all).empty?  && !Day.is_more_than_one_day( Admin.last.created_at.to_date ))
+  if (!Admin.find(:all).empty?  && !Day.is_more_than_one_day( Admin.last.created_at.utc.localtime("+05:45").to_date ))
         @current_message = Admin.last.message
 
-    elsif (!Admin.find(:all).empty?  && Day.is_more_than_one_day( Admin.last.created_at.to_date ))
+    elsif (!Admin.find(:all).empty?  && Day.is_more_than_one_day( Admin.last.created_at.utc.localtime("+05:45").to_date ))
           Admin.destroy_all
   end
 
-  if (@current_day != Date.today) && (!Holiday.is_holiday(@current_day))
+  if (@current_day != Time.now.utc.localtime("+05:45").to_date) && (!Holiday.is_holiday(@current_day))
     @current_message = " "
     @current_status = " "
   end

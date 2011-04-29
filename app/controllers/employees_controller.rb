@@ -17,4 +17,9 @@ def show
   @leaves = @employee.leaves.all
 end
 
+def search
+    @employees = Employee.search(params[:employee_name])
+    redirect_to employees_path, :remote => true
+end
+
 end
