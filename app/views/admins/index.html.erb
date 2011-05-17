@@ -12,16 +12,16 @@
     </ul>
     <ul id="links">
       <div id = "accordion">
-      <h2><a href="#">Manage Leaves</a></h2>
+      <h2><a href="#" class = "the_title">Manage Leaves</a></h2>
       <div id = "absent_today">
         <%= link_to "Grant a Leave", employees_path, :remote => true %><br />
          <%= link_to "Show Leave Status", leaves_path, :remote => true %>
       </div>
-      <h2><a href="#">Manage Holidays</a></h2>
+      <h2><a href="#" class = "the_title">Manage Holidays</a></h2>
       <div id = "holidays">
         <%= render 'holidays/form' %>
       </div>
-      <h2><a href="#">Upcoming Holidays</a></h2>
+      <h2><span class = "the_title">Upcoming Holidays</span></h2>
       <div id = "calendar">
         <%= render 'days/calendar_partial' %>
       </div>

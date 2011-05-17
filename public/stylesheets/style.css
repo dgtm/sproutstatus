@@ -23,7 +23,7 @@ body{ color:#fff; }
 .prev{ background-position:0 0; left:0; }
 .next{ background-position:right 0; right:0; }
 
-.ribbon-box{ background: url(../images/bg-transparent.png); padding:20px 190px; position:absolute; left:-195px; top:70px; width:400px; -webkit-transform: rotate(-45deg); -moz-transform: rotate(-45deg); color:#aacb58; font-size:48px; font-family: 'Goudy Bookletter 1911', arial, serif; text-align:center; }
+.ribbon-box{ background: url(../images/bg-transparent.png); padding:20px 190px; position:absolute; left:-195px; top:70px; width:400px; -webkit-transform: rotate(-45deg); -moz-transform: rotate(-45deg); color:#aacb58; font-size:48px; font-family: 'Permanent Marker', arial, serif; text-align:center; }
 /*#notice_and_alerts{ width: 490px; margin: 50px auto; position:relative; }*/
 #page-wrap-outer{ width: 490px; margin: 50px auto; position:relative; height:800px;}
 #page-wrap,#notice_and_alerts { width: 400px; margin: 0 auto; background: url(../images/bg-transparent.png); -moz-box-shadow: 0 0 20px black; -webkit-box-shadow: 0 0 20px black; box-shadow: 0 0 20px black; text-align:center;}
@@ -57,4 +57,8 @@ background: url(../images/bg-transparent.png);
       text-align:center;
       border-radius: 15px;
       padding:10px;
+}
+.the_title{
+font-family: 'Permanent Marker';
+font-size:36px;
 }
