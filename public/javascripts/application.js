@@ -25,8 +25,8 @@ $(function() {
       });
        $('#jclock').tzineClock();
       $('#accordion').accordion({
-        collapsible:true,active:false,
-        autoHeight: false,
-        navigation: true
+
+
+
         });
 });

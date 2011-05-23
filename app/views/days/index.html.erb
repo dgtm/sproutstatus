@@ -10,23 +10,27 @@
   <%= link_to 'next', days_path(:date => @next_day.to_date), :class =>"next" %>
 <% end %>
   <div id="page-wrap">
-    <h2 id="title"> <%= day_text(@current_day.to_time) %> </h2>
+  <div id = "accordion">
+    <h2 id="title"> <%= day_text(@current_day.to_time)[:day] %> </h2>
+    <div class = "accordion_body">
+        <% if day_text(@current_day.to_time)[:day] == "Today" %>
+            <div id = "jclock"> </div>
+        <% end %>
     <ul id="info-box">
-      <div id = "jclock"> </div>
       <li> <%= formatted_day(@current_day.to_time) %> </li>
       <li> <%= @current_status %> </li>
     </ul>
-    <ul id="links">
-      <div id = "accordion">
-      <h2><a href="#">Who's Out?</a></h2>
-      <div id = "absent_today">
+     </div>
+
+
+      <h2 id = "title"><%= day_text(@current_day.to_time)[:absent_text] %></h2>
+      <div id = "absent_today" class = "accordion_body">
         <%= render 'leaves/on_leave_today' %>
       </div>
-      <h2><a href="#">Upcoming Holidays</a></h2>
-      <div id = "calendar">
+      <h2 id = "title">Our Holidays</h2>
+      <div id = "calendar" class = "accordion_body">
         <%= render 'calendar_partial' %>
       </div>
-      </div>
-    </ul>
+    </div>
   </div>
 </div>

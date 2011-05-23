@@ -1,6 +1,14 @@
+<div id = 'search_box'>
+      <%= form_tag search_employees_path, :method => 'get', :remote => true do %>
+        <%= text_field_tag :employee_name %>
+        <%= submit_tag "Search" %>
+       <% end %>
+</div>
+
 <% @employees.each do |employee| %>
   <%= link_to employee.name, new_employee_leafe_path(employee) %> |
   <%= link_to "Approved Leaves", employee_path(employee) %>
   <br />
 <% end %>
+
 <%= link_to "[Back]", admins_path %>

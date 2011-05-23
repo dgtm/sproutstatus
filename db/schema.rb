@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110419075257) do
+ActiveRecord::Schema.define(:version => 20110425223948) do
 
   create_table "admins", :force => true do |t|
     t.string   "message"
@@ -37,9 +37,10 @@ ActiveRecord::Schema.define(:version => 20110419075257) do
     t.string   "name"
     t.datetime "start_at"
     t.datetime "end_at"
-    t.boolean  "all_day",    :default => false
+    t.boolean  "all_day",     :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "description"
   end
 
   create_table "leaves", :force => true do |t|

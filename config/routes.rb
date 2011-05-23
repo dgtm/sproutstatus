@@ -6,6 +6,7 @@ Sproutstatus::Application.routes.draw do
 resources :days
 
 resources :employees do
+   get 'search', :on => :collection
   resources :leaves
 end
 resources :leaves
