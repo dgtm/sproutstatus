@@ -3,8 +3,12 @@
 </div>
 
 <div id="page-wrap-outer">
+<% if @hide_left_arrow != true %>
   <%= link_to 'previous', days_path(:date => @previous_day.to_date), :class => "prev" %>
+<% end %>
+<% if @hide_right_arrow != true %>
   <%= link_to 'next', days_path(:date => @next_day.to_date), :class =>"next" %>
+<% end %>
   <div id="page-wrap">
     <h2 id="title"> <%= day_text(@current_day.to_time) %> </h2>
     <ul id="info-box">

@@ -27,13 +27,16 @@ end
    end
 
    def self.create_holidays
-        d = DateTime.now
-        begin
-        if (d.saturday?) || (d.sunday?)
-                @holiday = Holiday.create(:start_at => d, :name => "Weekend", :all_day => true)
+        d = Time.now.utc.localtime("+05:45").to_date          
+          begin
+            if (d.saturday? || d.sunday?)
+                # Check if the day has already been allocated as a weekend
+                weekends = Holiday.where(:start_at => d.beginning_of_day..d.end_of_day, :name => "Weekend")
+                @holiday = Holiday.create(:start_at => d, :end_at => d + 1.day, :name => "Weekend")
                 @holiday.save
-        end
+              end
         d = d + 1.day
-        end while d <= (DateTime.now + 2.months)
+          end while d <= (DateTime.now + 1.month)
    end
+
 end

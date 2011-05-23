@@ -9,6 +9,8 @@ gem 'sqlite3'
 gem 'jquery-rails'
 gem 'formtastic'
 gem 'event-calendar', :require => 'event_calendar'
+gem 'resque'
+gem 'resque-scheduler'
 
 # Use unicorn as the web server
 # gem 'unicorn'

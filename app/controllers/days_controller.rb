@@ -13,9 +13,11 @@ def index
   @next_day = @current_day + 1.day
   if (Time.now.utc.localtime("+05:45").to_date - @previous_day).to_i >= 7
     @previous_day = @current_day
+    @hide_left_arrow = true
   end
-  if (@next_day - Time.now.utc.localtime("+05:45").to_date).to_i > 2
+  if (@next_day - Time.now.utc.localtime("+05:45").to_date).to_i > 0
     @next_day = @current_day
+    @hide_right_arrow = true
   end
 #parameters necessary for the calendar
   @month = (params[:month] || (Time.zone || Time).now.month).to_i
