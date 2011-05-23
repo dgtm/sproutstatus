@@ -1,9 +1,7 @@
 class EmployeesController < ApplicationController
 
 def index
-p @searched_employees
-  @employees = @searched_employees || Employee.all
-  p @employees
+  @employees = Employee.all
 end
 
 def new
@@ -20,10 +18,8 @@ def show
 end
 
 def search
-    @searched_employees = Employee.search(params[:employee_name])
-    p 'huhhAHAHhahaa'
-    p @searched_employees
-    redirect_to employees_path(@searched_employees), :remote => true
+    @employees = Employee.search(params[:employee_name])
+    render 'index', :remote => true
 end
 
 end
